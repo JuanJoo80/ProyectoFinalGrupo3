@@ -401,24 +401,19 @@
   </style>
 </head>
 <body>
-  <!-- Navigation -->
   <nav class="nav-links">
     <a href="#inicio"><i class="fas fa-home"></i> Inicio</a>
     <a href="#centos-rocky"><i class="fas fa-server"></i> CentOS/Rocky</a>
     <a href="#alpine"><i class="fab fa-docker"></i> Docker/Alpine</a>
-    <a href="#contact"><i class="fas fa-envelope"></i> Contacto</a>
   </nav>
 
-  <!-- Header -->
   <header>
     <h1>Proyecto Final - Grupo 3</h1>
     <p>Explora nuestros tutoriales de instalación de CentOS, Rocky Linux y Docker con Alpine Linux</p>
     <a class="btn" href="#inicio">Comenzar <i class="fas fa-arrow-down"></i></a>
   </header>
 
-  <!-- Main Content -->
   <main>
-    <!-- Video Section -->
     <section id="inicio">
       <h2>Presentación del Proyecto</h2>
       <div class="video-container">
@@ -434,7 +429,6 @@
       </div>
     </section>
 
-    <!-- CentOS/Rocky Section -->
     <section id="centos-rocky">
       <h2>Instalación de CentOS y Rocky Linux</h2>
       
@@ -457,16 +451,14 @@
         <h3><i class="fas fa-code"></i> Scripts Bash</h3>
         <ul>
           <li><strong>Ejecución de scripts:</strong> <a href="https://youtu.be/QUJ3Egi9PpU" target="_blank">Ver video tutorial <i class="fas fa-external-link-alt"></i></a></li>
-          <li><strong>Descargar scripts:</strong> <a href="scripts.txt" download><i class="fas fa-download"></i> scripts.txt</a></li>
+          <li><strong>Descargar scripts:</strong> <a href="Automatizacion.pdf" download><i class="fas fa-download"></i> scripts.txt</a></li>
         </ul>
       </div>
     </section>
 
-    <!-- Alpine/Docker Section -->
     <section id="alpine">
       <h2>Dockerfile con Alpine Linux</h2>
       
-      <!-- Docker Desktop Installation -->
       <div class="content-section">
         <h3 class="highlight"><i class="fab fa-docker"></i> 4.1 Instalación de Docker Desktop</h3>
         <a href="https://www.youtube.com/watch?v=E9DUNWGd3WQ" class="btn" target="_blank">
@@ -502,7 +494,6 @@
         </div>
       </div>
       
-      <!-- Docker Image Creation -->
       <div class="content-section">
         <h3 class="highlight"><i class="fas fa-cube"></i> 4.2 Creación de Imagen Docker y 4.3 Contenedor</h3>
         <a href="https://www.youtube.com/watch?v=tZiZpnuGFts" class="btn" target="_blank">
@@ -551,7 +542,6 @@
         </div>
       </div>
       
-      <!-- Image Modification and Docker Hub -->
       <div class="content-section">
         <h3 class="highlight"><i class="fas fa-edit"></i> 5.1 Modificación de Imagen y 5.2 Publicación en Docker Hub</h3>
         <a href="https://www.youtube.com/watch?v=MkE_wOXH2Lg" class="btn" target="_blank">
@@ -619,25 +609,11 @@
       </div>
     </section>
     
-    <!-- Contact Section -->
-    <section id="contact">
-      <h2>Contacto</h2>
-      <div class="content-section">
-        <h3>¿Tienes preguntas sobre el proyecto?</h3>
-        <p>Puedes contactarnos a través de nuestros canales oficiales</p>
-        <div class="btn-group">
-          <a href="mailto:contacto@proyectogrupo3.com" class="btn">
-            <i class="fas fa-envelope"></i> Envíanos un email
-          </a>
-        </div>
-      </div>
-    </section>
   </main>
   
-  <!-- Footer -->
   <footer>
     <p>Proyecto Final - Grupo 3</p>
-    <p>Todos los derechos reservados &copy; 2023</p>
+    <p>Todos los derechos reservados &copy; 2025</p>
     <div class="social-links">
       <a href="#"><i class="fab fa-github"></i></a>
       <a href="#"><i class="fab fa-youtube"></i></a>
@@ -645,13 +621,11 @@
     </div>
   </footer>
   
-  <!-- Back to Top Button -->
   <div class="back-to-top">
     <i class="fas fa-arrow-up"></i>
   </div>
   
   <script>
-    // Back to top button
     const backToTopButton = document.querySelector('.back-to-top');
     
     window.addEventListener('scroll', () => {
@@ -669,7 +643,6 @@
       });
     });
     
-    // Smooth scrolling for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
         e.preventDefault();
