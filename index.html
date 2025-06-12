@@ -69,6 +69,9 @@
       max-width: 600px;
       margin: 0 auto;
     }
+    .red{
+      color: red;
+    }
   </style>
 </head>
 <body>
@@ -115,9 +118,162 @@
     <div class="content-section">
       <h2>Dockerfile con Alpine Linux</h2>
       <ul>
-        <li>Dockerfile base con editores</li>
-        <li>Capturas de creación de imagen</li>
-        <li>Publicación en Docker Hub: <a href="https://hub.docker.com/tu_imagen">Ver imagen</a></li>
+        <h1><li class="red">4.1 Instalación de Docker Desktop <a href="https://www.youtube.com/watch?v=E9DUNWGd3WQ">Ver video</a></li></h1>
+        <h1><li>Capturas y comandos explicados</li></h1>
+        <div>
+            <h1>1. Descargar el instalador de Docker Desktop</h1>
+            <img src="4.1/p1.PNG" width="600px" height="200px">
+        </div>
+        <div>
+            <h1>2. Ejecutar el instalador de Docker Desktop</h1>
+            <img src="4.1/p2.PNG" width="600px" height="300px">
+        </div>
+        <div>
+            <h1>3. Ejecutar el comando: docker --version y docker info.</h1>
+            <h4>Para conocer la version y la informancion de Docker que acabamos de instalar</h4>
+            <img src="4.1/p3.PNG" width="550px" height="400px">
+        </div>
+        <div>
+            <h1>4. Activamos el subsistema de windows para linux con el comado:</h1>
+            <li><h4>dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart</h4>
+            <h1>4.1 Ejecutamos El comando wsl -l -v:</h1></li>
+            <li><h4>se utiliza para listar todas las distribuciones de Linux instaladas en WSL, mostrando su nombre, estado 
+              (en ejecución o detenida) y la versión de WSL (1 o 2) que están usando.</h4></li>
+            <img src="4.1/p4.PNG" width="600px" sheight="200px">
+        </div>
+        <div>
+            <h1>5. ejecutamos docker desktop y verificamos que este corriendo el docker engine.</h1>
+            <h4>Como se muestra en la imagen.</h4>
+            <img src="4.1/p6.PNG" width="600px" height="300px">
+        </div>
+
+
+
+
+        <h1><li class="red">4.2 Creación de imagen Docker y 4.3 Creación de contenedor <a href="https://www.youtube.com/watch?v=tZiZpnuGFts">Ver video</a></li></h1>
+        <h1><li>Capturas y comandos explicados</li></h1>
+        <div>
+            <h1>1. Creación del Dockerfile.</h1>
+            <h4>En el Dockerfile indicamos las intrucciones con las que se va a construir nuestra imagen de Apline Linux.</h4>
+            <img src="4.2 y 4.3/p1.PNG" width="550px" height="400px">
+        </div>
+        <div>
+            <h1>2. Guardamos nuestro Dockerfile sin ningun tipo de extencion en una carpeta de nuestra preferencia.</h1>
+            <img src="4.2 y 4.3/p2.PNG" width="550px" height="400px">
+        </div>
+        <div>
+            <h1>3. Copiamos la ruta de la carpeta donde guardamos nuestro Dockerfile.</h1>
+            <img src="4.2 y 4.3/p3.PNG" width="600px" height="100px">
+        </div>
+        <div>
+            <h1>4. Accedemos a la carpeta desde el CMD.</h1>
+            <h4>para este paso debemos escribir el comando: cd "la ruta de la/carpeta/donde/se/encuentra/dockerfile"</h4>
+            <img src="4.2 y 4.3/p4.PNG" width="600px" height="50px">
+        </div>
+        <div>
+            <h1>5. Creacion de la imagen apartir del Dockerfile.</h1>
+            <h4>para este paso debemos escribir el comando: docker build -t "nombre de nuestra preferencia" . (el punto al final es importante)</h4>
+            <img src="4.2 y 4.3/p5.PNG" width="600px" height="200px">
+        </div>
+        <div>
+            <h1>6. verificamos con el comando: docker images.</h1>
+            <img src="4.2 y 4.3/p6.PNG" width="600px" height="50px">
+        </div>
+        <div>
+            <h1>7. Ejecutamos un contenedor interactivo basado en nustra imagen de docker.</h1>
+            <li><h4>Para este paso debemos escribir el comando: docker run -it --name "nombre de preferencia" "nombre de nuestra imagen" /bin/bash</h4></li>
+            <li><h4>Luego verificamos las versiones de la aplicaiones inataladas previamente en nuestra imagen para esto debemos escribir el comando: "nombre de la aplicion" --version</h4></li>
+            <li><h4>Ejemplo: nano --version.</h4></li>
+            <li><h4>salimos del contenedor con el comando: exit.</h4></li>
+            <img src="4.2 y 4.3/p7.PNG" width="600px" height="125px">
+        </div>
+
+
+
+
+        <h1 class="red"><li>5.1 Modificación de imagen y 5.2 Publicación en Docker Hub <a href="https://www.youtube.com/watch?v=MkE_wOXH2Lg">Ver video</a></li></h1>
+        <div>
+            <h1>1. Creamos un nuevo Dockerfile.</h1>
+            <li><h4>En el Dockerfile indicamos que modifique la imagen previamente creada e instale en editores de codigo como lo son: pyton3, nodejs etc.</h4></li>
+            <img src="5.1 y 5.2/p1.PNG" width="600px" height="300px">
+        </div>
+          <div>
+            <h1>2. Guardamos nuestro Dockerfile sin ningun tipo de extencion en una carpeta de nuestra preferencia.</h1>
+            <img src="5.1 y 5.2/p2.PNG" width="600px" height="300px">
+        </div>
+        <div>
+            <h1>3. Copiamos la ruta de la carpeta donde guardamos nuestro Dockerfile.</h1>
+            <img src="5.1 y 5.2/p3.PNG" width="600px" height="100px">
+        </div>
+        <div>
+            <h1>4. Accedemos a la carpeta desde el CMD.</h1>
+            <h4>para este paso debemos escribir el comando: cd "la ruta de la/carpeta/donde/se/encuentra/dockerfile"</h4>
+            <img src="5.1 y 5.2/p4.PNG" width="600px" height="50px">
+        </div>
+        <div>
+            <h1>5. Creacion de la imagen apartir del Dockerfile.</h1>
+            <h4>para este paso debemos escribir el comando: docker build -t alpine-proyecto-modificado . (el punto al final es importante)</h4>
+            <img src="5.1 y 5.2/p5.PNG" width="600px" height="200px">
+        </div>
+        <div>
+            <h1>6. verificamos con el comando: docker images.</h1>
+            <img src="5.1 y 5.2/p6.PNG" width="600px" height="50px">
+        </div>
+        <div>
+            <h1>7. Ejecutamos un contenedor interactivo basado en nustra imagen  de docker previamente modificada.</h1>
+            <li><h4>Para este paso debemos escribir el comando: docker run -it --name "nombre de preferencia" alpine-proyecto-modificado /bin/bash</h4></li>
+            <li><h4>Luego verificamos las versiones de la aplicaiones inataladas 
+              previamente en nuestra imagen para esto debemos escribir el comando: "nombre de la aplicion" --version.</h4></li>
+              <li><h4>Ejemplo: pyton3 --version.</h4></li>
+              <li><h4>salimos del contenedor con el comando: exit.</h4></li>
+            <img src="5.1 y 5.2/p7.PNG" width="600px" height="150px">
+        </div>
+        <div>
+            <h1>8. Subir la imagen a Docker Hub.</h1>
+            <li><h4>Para esto primero debemos hacer login con el comando: docker login -u "nobre de usuarion en Docker Hub" y luego escribimos nuestra contraseña.</h4></li>
+            <img src="5.1 y 5.2/p8.PNG" width="600px" height="100px">
+        </div>
+            <div>
+            <h1>9. Etiquetar la imagen con nuestro nombre de usuario.</h1>
+            <li><h4>Para esto primero debemos Ejecutar el comando: docker tag "nombre de nuestra imagen" "nombre de usuario en docker hub"/"nombre de nuestra imagen":latest.</h4></li>
+            <li><h4>Ejemplo: docker tag alpine-proyecto-modificado julianalexis/alpine-proyecto-modificado:latest</h4></li>
+            <li><h4>Verificamos que se etiquete correctamente nuestra imagen con el comando: docker images.</h4></li>
+            <img src="5.1 y 5.2/p9.PNG" width="600px" height="50px">
+        </div>
+        <div>
+            <h1>10. Subir la imagen etiquetada a Docker Hub.</h1>
+            <li><h4>Para este paso debemos ejecutar el comando: docker push "imagen etiquetada con el nobre de usuario".</h4></li>
+            <li><h4>Ejemplo: docker push julianalexis/alpine-proyecto-modificado.</h4></li>
+            <img src="5.1 y 5.2/p10.PNG" width="600px" height="100px">
+        </div>
+        <div>
+            <h1>11. Visualizar la imagen en Docker Hub.</h1>
+            <li><h4>Para este paso accdemos a nuestro navegador, vamos a la pagina de Docker Hub luego a la seccion de repository y buscamos la imagen con el nombre colocado anteriormente.</h4></li>
+            <img src="5.1 y 5.2/p11.PNG" width="600px" height="250px">
+        </div>
+        <div>
+            <h1>Notas adicionales.</h1>
+            <li><h4>Alpine Linux es una distribución muy ligera basada en "musl libc" y "BusyBox", 
+            lo que la hace ideal para contenedores Docker pequeños y seguros. Sin embargo, esa ligereza 
+            trae limitaciones importantes al instalar aplicaciones grandes o complejas como:
+
+            <li>Atom</li>
+
+            <li>Eclipse</li>
+
+            <li>LibreOffice</li>
+
+            Estas aplicaciones tienen muchas dependencias gráficas y bibliotecas que no están
+             disponibles en Alpine, o no son compatibles con musl libc</h4></li>
+             <h4><li>Muchas aplicaciones como Atom y Eclipse están compiladas para sistemas basados en "glibc" como Debian, Ubuntu, Fedora.</li></h4>
+             <h4><li>Debido a que Alpine Linux usa "MUSL" y NO utiliza GLIBC estas aplicaciones complejas o con 
+              muchas dependencias genran errores al intentar su instalacion.</li></h4>
+              <li><h4>Se recomienda utilizar una imagen base más completa
+            si se necesita de  esas aplicaciones, es mejor usar una imagen base como: ubuntu, debian o fedora.</h4></li>
+        </div>
+
+
+        <h1 class="red"><li>Ver imagen en Docker Hub: <a href="https://hub.docker.com/repository/docker/julianalexis/alpine-proyecto-modificado/general">Ver imagen Alpine Linux</a></li></h1>
       </ul>
     </div>
   </section>
