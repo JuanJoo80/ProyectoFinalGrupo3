@@ -1,0 +1,16 @@
+FROM alpine-proyecto:latest
+
+# Instalar herramientas adicionales de desarrollo y utilitarias
+RUN apk update && \
+    apk upgrade && \
+    apk add \
+    htop \
+    mc \
+    python3 \
+    py3-pip \
+    build-base \
+    nodejs \
+    npm
+
+# iniciar el contenedor
+CMD ["/bin/bash"]
