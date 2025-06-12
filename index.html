@@ -4,278 +4,681 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Proyecto Final - Grupo 3</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f9f9f9;
-      color: #333;
+    :root {
+      --primary-color: #007acc;
+      --secondary-color: #2c3e50;
+      --accent-color: #e74c3c;
+      --light-color: #ecf0f1;
+      --dark-color: #2c3e50;
+      --text-color: #333;
+      --text-light: #7f8c8d;
+      --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
     }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: var(--text-color);
+      background-color: #f5f7fa;
+      overflow-x: hidden;
+    }
+
+    /* Header */
     header {
-      background: url('https://via.placeholder.com/1500x400?text=Bienvenido+al+Proyecto+Final') no-repeat center center/cover;
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                  url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80') no-repeat center center/cover;
       height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      color: white;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
-    }
-    header h1 {
-      font-size: 4rem;
-    }
-    .btn {
-      background: #007acc;
-      color: white;
-      padding: 15px 30px;
-      font-size: 1.2rem;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      margin-top: 20px;
-      text-decoration: none;
-    }
-    section {
-      padding: 40px;
       text-align: center;
+      color: white;
+      padding: 0 20px;
     }
-    .video-container iframe {
-      width: 80%;
-      height: 450px;
+
+    header h1 {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+      animation: fadeInDown 1s ease;
+    }
+
+    header p {
+      font-size: 1.5rem;
+      max-width: 800px;
+      margin-bottom: 30px;
+      animation: fadeInUp 1s ease;
+    }
+
+    /* Navigation */
+    .nav-links {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: rgba(44, 62, 80, 0.9);
+      padding: 15px 0;
+      z-index: 1000;
+      box-shadow: var(--shadow);
+      display: flex;
+      justify-content: center;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: 500;
+      transition: var(--transition);
+      padding: 5px 10px;
+      border-radius: 4px;
+    }
+
+    .nav-links a:hover {
+      background-color: var(--primary-color);
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      background: var(--primary-color);
+      color: white;
+      padding: 12px 30px;
+      font-size: 1.1rem;
       border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: var(--transition);
+      text-decoration: none;
+      font-weight: 500;
+      box-shadow: 0 4px 15px rgba(0, 122, 204, 0.3);
     }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0, 122, 204, 0.4);
+      background: #006bb3;
+    }
+
+    .btn-secondary {
+      background: var(--secondary-color);
+      box-shadow: 0 4px 15px rgba(44, 62, 80, 0.3);
+    }
+
+    .btn-secondary:hover {
+      background: #1a252f;
+      box-shadow: 0 6px 20px rgba(44, 62, 80, 0.4);
+    }
+
+    .btn-accent {
+      background: var(--accent-color);
+      box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+    }
+
+    .btn-accent:hover {
+      background: #c0392b;
+      box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4);
+    }
+
     .btn-group {
       display: flex;
       justify-content: center;
       gap: 20px;
-      margin-top: 40px;
+      margin-top: 30px;
+      flex-wrap: wrap;
     }
-    .btn-secondary {
-      background: #555;
-    }
-    .content-section {
-      background: white;
-      margin: 20px auto;
-      padding: 20px;
-      max-width: 900px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    h2 {
-      color: #007acc;
-    }
-    ul {
-      text-align: left;
-      max-width: 600px;
+
+    /* Sections */
+    section {
+      padding: 80px 20px;
+      max-width: 1200px;
       margin: 0 auto;
     }
-    .red{
-      color: red;
+
+    section h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 50px;
+      color: var(--primary-color);
+      position: relative;
+    }
+
+    section h2::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: var(--primary-color);
+      margin: 15px auto;
+      border-radius: 2px;
+    }
+
+    /* Video Container */
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+      height: 0;
+      overflow: hidden;
+      margin: 30px 0;
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* Content Cards */
+    .content-section {
+      background: white;
+      margin: 30px 0;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+
+    .content-section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .content-section h3 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      color: var(--secondary-color);
+    }
+
+    /* Lists */
+    ul {
+      list-style-position: inside;
+      margin: 20px 0;
+    }
+
+    ul li {
+      margin-bottom: 10px;
+      line-height: 1.8;
+    }
+
+    /* Links */
+    a {
+      color: var(--primary-color);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    a:hover {
+      color: var(--accent-color);
+      text-decoration: underline;
+    }
+
+    /* Highlight */
+    .highlight {
+      color: var(--accent-color);
+      font-weight: 600;
+    }
+
+    /* Image Containers */
+    .img-container {
+      margin: 25px 0;
+      text-align: center;
+    }
+
+    .img-container img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+
+    .img-container img:hover {
+      transform: scale(1.02);
+    }
+
+    .img-container h4 {
+      margin: 15px 0;
+      font-size: 1.2rem;
+      color: var(--secondary-color);
+    }
+
+    .img-container p {
+      color: var(--text-light);
+      font-size: 0.95rem;
+      margin-bottom: 15px;
+    }
+
+    /* Notes */
+    .notes {
+      background: #f8f9fa;
+      border-left: 4px solid var(--primary-color);
+      padding: 20px;
+      margin: 30px 0;
+      border-radius: 0 5px 5px 0;
+    }
+
+    .notes h3 {
+      color: var(--primary-color);
+      margin-bottom: 10px;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--secondary-color);
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+      margin-top: 50px;
+    }
+
+    footer p {
+      margin-bottom: 10px;
+    }
+
+    .social-links {
+      margin-top: 20px;
+    }
+
+    .social-links a {
+      color: white;
+      font-size: 1.5rem;
+      margin: 0 10px;
+      transition: var(--transition);
+    }
+
+    .social-links a:hover {
+      color: var(--primary-color);
+    }
+
+    /* Animations */
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2.5rem;
+      }
+
+      header p {
+        font-size: 1.2rem;
+      }
+
+      .btn-group {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .btn {
+        width: 100%;
+        max-width: 250px;
+        margin-bottom: 15px;
+      }
+
+      section {
+        padding: 50px 20px;
+      }
+
+      section h2 {
+        font-size: 2rem;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        padding: 10px;
+      }
+
+      .nav-links a {
+        margin: 5px;
+        font-size: 0.9rem;
+      }
+    }
+
+    /* Back to top button */
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: var(--primary-color);
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.2rem;
+      box-shadow: var(--shadow);
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition);
+      z-index: 999;
+    }
+
+    .back-to-top.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top:hover {
+      background: var(--accent-color);
+      transform: translateY(-3px);
     }
   </style>
 </head>
 <body>
+  <!-- Navigation -->
+  <nav class="nav-links">
+    <a href="#inicio"><i class="fas fa-home"></i> Inicio</a>
+    <a href="#centos-rocky"><i class="fas fa-server"></i> CentOS/Rocky</a>
+    <a href="#alpine"><i class="fab fa-docker"></i> Docker/Alpine</a>
+    <a href="#contact"><i class="fas fa-envelope"></i> Contacto</a>
+  </nav>
+
+  <!-- Header -->
   <header>
-    <h1>Bienvenido</h1>
-    <a class="btn" href="#inicio">Entrar al Proyecto</a>
+    <h1>Proyecto Final - Grupo 3</h1>
+    <p>Explora nuestros tutoriales de instalación de CentOS, Rocky Linux y Docker con Alpine Linux</p>
+    <a class="btn" href="#inicio">Comenzar <i class="fas fa-arrow-down"></i></a>
   </header>
 
-  <section id="inicio">
-    <h2>Video de Presentación del Proyecto</h2>
-    <div class="video-container">
-      <iframe src="https://youtu.be/zDZJ8VByhUk" allowfullscreen></iframe>
-    </div>
-    <div class="btn-group">
-      <a class="btn btn-secondary" href="#centos-rocky">Instalación CentOS y Rocky Linux</a>
-      <a class="btn btn-secondary" href="#alpine">Instalación Dockerfile con Alpine</a>
-    </div>
-  </section>
+  <!-- Main Content -->
+  <main>
+    <!-- Video Section -->
+    <section id="inicio">
+      <h2>Presentación del Proyecto</h2>
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/zDZJ8VByhUk" allowfullscreen></iframe>
+      </div>
+      <div class="btn-group">
+        <a class="btn btn-secondary" href="#centos-rocky">
+          <i class="fas fa-server"></i> CentOS/Rocky Linux
+        </a>
+        <a class="btn btn-accent" href="#alpine">
+          <i class="fab fa-docker"></i> Docker con Alpine
+        </a>
+      </div>
+    </section>
 
-  <section id="centos-rocky">
-    <div class="content-section">
+    <!-- CentOS/Rocky Section -->
+    <section id="centos-rocky">
       <h2>Instalación de CentOS y Rocky Linux</h2>
-      <ul>
-        <li>Video de instalación de CentOS: <a href="https://youtu.be/OZGsEoEWRwg">Ver</a></li>
-        <li>Video de instalación de Rocky Linux: <a href="https://youtu.be/Fo_TuuYtiaM">Ver</a></li>
-      </ul>
-    </div>
-    <div class="content-section">
-      <h2>Editores de Texto</h2>
-      <ul>
-        <li>Instalación y configuracion de editores de texto: <a href="https://youtu.be/xA_C9q-vEzk">Ver</a></li>
-      </ul>
-    </div>
-    <div class="content-section">
-      <h2>Scripts Bash</h2>
-      <ul>
-        <li>Video de ejecución de scripts: <a href="https://youtu.be/QUJ3Egi9PpU">Ver</a></li>
-        <li>Archivo de scripts: <a href="scripts.txt" download>Descargar scripts.txt</a></li>
-      </ul>
-    </div>
-  </section>
+      
+      <div class="content-section">
+        <h3><i class="fas fa-film"></i> Videos de Instalación</h3>
+        <ul>
+          <li><strong>Instalación de CentOS:</strong> <a href="https://youtu.be/OZGsEoEWRwg" target="_blank">Ver video tutorial <i class="fas fa-external-link-alt"></i></a></li>
+          <li><strong>Instalación de Rocky Linux:</strong> <a href="https://youtu.be/Fo_TuuYtiaM" target="_blank">Ver video tutorial <i class="fas fa-external-link-alt"></i></a></li>
+        </ul>
+      </div>
+      
+      <div class="content-section">
+        <h3><i class="fas fa-edit"></i> Editores de Texto</h3>
+        <ul>
+          <li><strong>Instalación y configuración:</strong> <a href="https://youtu.be/xA_C9q-vEzk" target="_blank">Ver video tutorial <i class="fas fa-external-link-alt"></i></a></li>
+        </ul>
+      </div>
+      
+      <div class="content-section">
+        <h3><i class="fas fa-code"></i> Scripts Bash</h3>
+        <ul>
+          <li><strong>Ejecución de scripts:</strong> <a href="https://youtu.be/QUJ3Egi9PpU" target="_blank">Ver video tutorial <i class="fas fa-external-link-alt"></i></a></li>
+          <li><strong>Descargar scripts:</strong> <a href="scripts.txt" download><i class="fas fa-download"></i> scripts.txt</a></li>
+        </ul>
+      </div>
+    </section>
 
-  <section id="alpine">
-    <div class="content-section">
+    <!-- Alpine/Docker Section -->
+    <section id="alpine">
       <h2>Dockerfile con Alpine Linux</h2>
-      <ul>
-        <h1><li class="red">4.1 Instalación de Docker Desktop <a href="https://www.youtube.com/watch?v=E9DUNWGd3WQ">Ver video</a></li></h1>
-        <h1><li>Capturas y comandos explicados</li></h1>
-        <div>
-            <h1>1. Descargar el instalador de Docker Desktop</h1>
-            <img src="4.1/p1.PNG" width="600px" height="200px">
+      
+      <!-- Docker Desktop Installation -->
+      <div class="content-section">
+        <h3 class="highlight"><i class="fab fa-docker"></i> 4.1 Instalación de Docker Desktop</h3>
+        <a href="https://www.youtube.com/watch?v=E9DUNWGd3WQ" class="btn" target="_blank">
+          <i class="fas fa-play"></i> Ver video tutorial
+        </a>
+        
+        <div class="img-container">
+          <h4>1. Descargar el instalador de Docker Desktop</h4>
+          <img src="4.1/p1.PNG" alt="Descarga Docker Desktop">
         </div>
-        <div>
-            <h1>2. Ejecutar el instalador de Docker Desktop</h1>
-            <img src="4.1/p2.PNG" width="600px" height="300px">
+        
+        <div class="img-container">
+          <h4>2. Ejecutar el instalador de Docker Desktop</h4>
+          <img src="4.1/p2.PNG" alt="Instalación Docker Desktop">
         </div>
-        <div>
-            <h1>3. Ejecutar el comando: docker --version y docker info.</h1>
-            <h4>Para conocer la version y la informancion de Docker que acabamos de instalar</h4>
-            <img src="4.1/p3.PNG" width="550px" height="400px">
+        
+        <div class="img-container">
+          <h4>3. Verificar instalación con comandos</h4>
+          <p>Comandos: <code>docker --version</code> y <code>docker info</code></p>
+          <img src="4.1/p3.PNG" alt="Verificación Docker">
         </div>
-        <div>
-            <h1>4. Activamos el subsistema de windows para linux con el comado:</h1>
-            <li><h4>dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart</h4>
-            <h1>4.1 Ejecutamos El comando wsl -l -v:</h1></li>
-            <li><h4>se utiliza para listar todas las distribuciones de Linux instaladas en WSL, mostrando su nombre, estado 
-              (en ejecución o detenida) y la versión de WSL (1 o 2) que están usando.</h4></li>
-            <img src="4.1/p4.PNG" width="600px" sheight="200px">
+        
+        <div class="img-container">
+          <h4>4. Activar subsistema Windows para Linux</h4>
+          <p>Comando: <code>dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart</code></p>
+          <p>Verificación con <code>wsl -l -v</code></p>
+          <img src="4.1/p4.PNG" alt="WSL Configuración">
         </div>
-        <div>
-            <h1>5. ejecutamos docker desktop y verificamos que este corriendo el docker engine.</h1>
-            <h4>Como se muestra en la imagen.</h4>
-            <img src="4.1/p6.PNG" width="600px" height="300px">
+        
+        <div class="img-container">
+          <h4>5. Verificar Docker Engine en Docker Desktop</h4>
+          <img src="4.1/p6.PNG" alt="Docker Engine">
         </div>
-
-
-
-
-        <h1><li class="red">4.2 Creación de imagen Docker y 4.3 Creación de contenedor <a href="https://www.youtube.com/watch?v=tZiZpnuGFts">Ver video</a></li></h1>
-        <h1><li>Capturas y comandos explicados</li></h1>
-        <div>
-            <h1>1. Creación del Dockerfile.</h1>
-            <h4>En el Dockerfile indicamos las intrucciones con las que se va a construir nuestra imagen de Apline Linux.</h4>
-            <img src="4.2_ y_4.3/p1.PNG" width="550px" height="400px">
+      </div>
+      
+      <!-- Docker Image Creation -->
+      <div class="content-section">
+        <h3 class="highlight"><i class="fas fa-cube"></i> 4.2 Creación de Imagen Docker y 4.3 Contenedor</h3>
+        <a href="https://www.youtube.com/watch?v=tZiZpnuGFts" class="btn" target="_blank">
+          <i class="fas fa-play"></i> Ver video tutorial
+        </a>
+        
+        <div class="img-container">
+          <h4>1. Creación del Dockerfile</h4>
+          <img src="4.2_ y_4.3/p1.PNG" alt="Dockerfile contenido">
         </div>
-        <div>
-            <h1>2. Guardamos nuestro Dockerfile sin ningun tipo de extencion en una carpeta de nuestra preferencia.</h1>
-            <img src="4.2_ y_4.3/p2.PNG" width="550px" height="400px">
+        
+        <div class="img-container">
+          <h4>2. Guardar Dockerfile sin extensión</h4>
+          <img src="4.2_ y_4.3/p2.PNG" alt="Guardar Dockerfile">
         </div>
-        <div>
-            <h1>3. Copiamos la ruta de la carpeta donde guardamos nuestro Dockerfile.</h1>
-            <img src="4.2_ y_4.3/p3.PNG" width="600px" height="100px">
+        
+        <div class="img-container">
+          <h4>3. Copiar ruta de la carpeta</h4>
+          <img src="4.2_ y_4.3/p3.PNG" alt="Copiar ruta">
         </div>
-        <div>
-            <h1>4. Accedemos a la carpeta desde el CMD.</h1>
-            <h4>para este paso debemos escribir el comando: cd "la ruta de la/carpeta/donde/se/encuentra/dockerfile"</h4>
-            <img src="4.2_ y_4.3/p4.PNG" width="600px" height="50px">
+        
+        <div class="img-container">
+          <h4>4. Acceder a carpeta desde CMD</h4>
+          <p>Comando: <code>cd "ruta\de\la\carpeta"</code></p>
+          <img src="4.2_ y_4.3/p4.PNG" alt="Acceso CMD">
         </div>
-        <div>
-            <h1>5. Creacion de la imagen apartir del Dockerfile.</h1>
-            <h4>para este paso debemos escribir el comando: docker build -t "nombre de nuestra preferencia" . (el punto al final es importante)</h4>
-            <img src="4.2_ y_4.3/p5.PNG" width="600px" height="200px">
+        
+        <div class="img-container">
+          <h4>5. Creación de la imagen</h4>
+          <p>Comando: <code>docker build -t nombre-imagen .</code></p>
+          <img src="4.2_ y_4.3/p5.PNG" alt="Creación imagen">
         </div>
-        <div>
-            <h1>6. verificamos con el comando: docker images.</h1>
-            <img src="4.2_ y_4.3/p6.PNG" width="600px" height="50px">
+        
+        <div class="img-container">
+          <h4>6. Verificar imágenes disponibles</h4>
+          <p>Comando: <code>docker images</code></p>
+          <img src="4.2_ y_4.3/p6.PNG" alt="Listado imágenes">
         </div>
-        <div>
-            <h1>7. Ejecutamos un contenedor interactivo basado en nustra imagen de docker.</h1>
-            <li><h4>Para este paso debemos escribir el comando: docker run -it --name "nombre de preferencia" "nombre de nuestra imagen" /bin/bash</h4></li>
-            <li><h4>Luego verificamos las versiones de la aplicaiones inataladas previamente en nuestra imagen para esto debemos escribir el comando: "nombre de la aplicion" --version</h4></li>
-            <li><h4>Ejemplo: nano --version.</h4></li>
-            <li><h4>salimos del contenedor con el comando: exit.</h4></li>
-            <img src="4.2_ y_4.3/p7.PNG" width="600px" height="125px">
+        
+        <div class="img-container">
+          <h4>7. Ejecutar contenedor interactivo</h4>
+          <p>Comando: <code>docker run -it --name nombre-contenedor nombre-imagen /bin/bash</code></p>
+          <p>Verificar versiones con <code>nano --version</code></p>
+          <p>Salir con <code>exit</code></p>
+          <img src="4.2_ y_4.3/p7.PNG" alt="Contenedor interactivo">
         </div>
-
-
-
-
-        <h1 class="red"><li>5.1 Modificación de imagen y 5.2 Publicación en Docker Hub <a href="https://www.youtube.com/watch?v=MkE_wOXH2Lg">Ver video</a></li></h1>
-        <div>
-            <h1>1. Creamos un nuevo Dockerfile.</h1>
-            <li><h4>En el Dockerfile indicamos que modifique la imagen previamente creada e instale en editores de codigo como lo son: pyton3, nodejs etc.</h4></li>
-            <img src="5.1_y_5.2/p1.PNG" width="600px" height="300px">
+      </div>
+      
+      <!-- Image Modification and Docker Hub -->
+      <div class="content-section">
+        <h3 class="highlight"><i class="fas fa-edit"></i> 5.1 Modificación de Imagen y 5.2 Publicación en Docker Hub</h3>
+        <a href="https://www.youtube.com/watch?v=MkE_wOXH2Lg" class="btn" target="_blank">
+          <i class="fas fa-play"></i> Ver video tutorial
+        </a>
+        
+        <div class="img-container">
+          <h4>1. Nuevo Dockerfile modificado</h4>
+          <img src="5.1_y_5.2/p1.PNG" alt="Dockerfile modificado">
         </div>
-          <div>
-            <h1>2. Guardamos nuestro Dockerfile sin ningun tipo de extencion en una carpeta de nuestra preferencia.</h1>
-            <img src="5.1_y_5.2/p2.PNG" width="600px" height="300px">
+        
+        <div class="img-container">
+          <h4>2. Guardar Dockerfile modificado</h4>
+          <img src="5.1_y_5.2/p2.PNG" alt="Guardar Dockerfile modificado">
         </div>
-        <div>
-            <h1>3. Copiamos la ruta de la carpeta donde guardamos nuestro Dockerfile.</h1>
-            <img src="5.1_y_5.2/p3.PNG" width="600px" height="100px">
+        
+        <div class="img-container">
+          <h4>3-6. Crear nueva imagen modificada</h4>
+          <p>Proceso similar al anterior con el nuevo Dockerfile</p>
+          <img src="5.1_y_5.2/p6.PNG" alt="Imagen modificada">
         </div>
-        <div>
-            <h1>4. Accedemos a la carpeta desde el CMD.</h1>
-            <h4>para este paso debemos escribir el comando: cd "la ruta de la/carpeta/donde/se/encuentra/dockerfile"</h4>
-            <img src="5.1_y_5.2/p4.PNG" width="600px" height="50px">
+        
+        <div class="img-container">
+          <h4>7. Ejecutar contenedor con imagen modificada</h4>
+          <p>Verificar instalaciones con <code>python3 --version</code></p>
+          <img src="5.1_y_5.2/p7.PNG" alt="Contenedor modificado">
         </div>
-        <div>
-            <h1>5. Creacion de la imagen apartir del Dockerfile.</h1>
-            <h4>para este paso debemos escribir el comando: docker build -t alpine-proyecto-modificado . (el punto al final es importante)</h4>
-            <img src="5.1_y_5.2/p5.PNG" width="600px" height="200px">
+        
+        <div class="img-container">
+          <h4>8. Login en Docker Hub</h4>
+          <p>Comando: <code>docker login -u usuario</code></p>
+          <img src="5.1_y_5.2/p8.PNG" alt="Docker login">
         </div>
-        <div>
-            <h1>6. verificamos con el comando: docker images.</h1>
-            <img src="5.1_y_5.2/p6.PNG" width="600px" height="50px">
+        
+        <div class="img-container">
+          <h4>9. Etiquetar imagen para Docker Hub</h4>
+          <p>Comando: <code>docker tag nombre-imagen usuario/nombre-imagen:latest</code></p>
+          <img src="5.1_y_5.2/p9.PNG" alt="Etiquetar imagen">
         </div>
-        <div>
-            <h1>7. Ejecutamos un contenedor interactivo basado en nustra imagen  de docker previamente modificada.</h1>
-            <li><h4>Para este paso debemos escribir el comando: docker run -it --name "nombre de preferencia" alpine-proyecto-modificado /bin/bash</h4></li>
-            <li><h4>Luego verificamos las versiones de la aplicaiones inataladas 
-              previamente en nuestra imagen para esto debemos escribir el comando: "nombre de la aplicion" --version.</h4></li>
-              <li><h4>Ejemplo: pyton3 --version.</h4></li>
-              <li><h4>salimos del contenedor con el comando: exit.</h4></li>
-            <img src="5.1_y_5.2/p7.PNG" width="600px" height="150px">
+        
+        <div class="img-container">
+          <h4>10. Subir imagen a Docker Hub</h4>
+          <p>Comando: <code>docker push usuario/nombre-imagen</code></p>
+          <img src="5.1_y_5.2/p10.PNG" alt="Push Docker Hub">
         </div>
-        <div>
-            <h1>8. Subir la imagen a Docker Hub.</h1>
-            <li><h4>Para esto primero debemos hacer login con el comando: docker login -u "nobre de usuarion en Docker Hub" y luego escribimos nuestra contraseña.</h4></li>
-            <img src="5.1_y_5.2/p8.PNG" width="600px" height="100px">
+        
+        <div class="img-container">
+          <h4>11. Imagen en Docker Hub</h4>
+          <img src="5.1_y_5.2/p11.PNG" alt="Imagen en Docker Hub">
         </div>
-            <div>
-            <h1>9. Etiquetar la imagen con nuestro nombre de usuario.</h1>
-            <li><h4>Para esto primero debemos Ejecutar el comando: docker tag "nombre de nuestra imagen" "nombre de usuario en docker hub"/"nombre de nuestra imagen":latest.</h4></li>
-            <li><h4>Ejemplo: docker tag alpine-proyecto-modificado julianalexis/alpine-proyecto-modificado:latest</h4></li>
-            <li><h4>Verificamos que se etiquete correctamente nuestra imagen con el comando: docker images.</h4></li>
-            <img src="5.1_y_5.2/p9.PNG" width="600px" height="50px">
+        
+        <div class="notes">
+          <h3><i class="fas fa-info-circle"></i> Notas Adicionales</h3>
+          <p>Alpine Linux es una distribución ligera basada en "musl libc" y "BusyBox", ideal para contenedores pequeños y seguros, pero con algunas limitaciones:</p>
+          <ul>
+            <li>Aplicaciones complejas como Atom, Eclipse o LibreOffice pueden no ser compatibles</li>
+            <li>Muchas aplicaciones están compiladas para sistemas con "glibc" (Debian, Ubuntu)</li>
+            <li>Para aplicaciones con muchas dependencias, considera usar imágenes base como Ubuntu o Debian</li>
+          </ul>
         </div>
-        <div>
-            <h1>10. Subir la imagen etiquetada a Docker Hub.</h1>
-            <li><h4>Para este paso debemos ejecutar el comando: docker push "imagen etiquetada con el nobre de usuario".</h4></li>
-            <li><h4>Ejemplo: docker push julianalexis/alpine-proyecto-modificado.</h4></li>
-            <img src="5.1_y_5.2/p10.PNG" width="600px" height="100px">
+        
+        <a href="https://hub.docker.com/repository/docker/julianalexis/alpine-proyecto-modificado/general" class="btn" target="_blank">
+          <i class="fab fa-docker"></i> Ver imagen en Docker Hub
+        </a>
+      </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact">
+      <h2>Contacto</h2>
+      <div class="content-section">
+        <h3>¿Tienes preguntas sobre el proyecto?</h3>
+        <p>Puedes contactarnos a través de nuestros canales oficiales</p>
+        <div class="btn-group">
+          <a href="mailto:contacto@proyectogrupo3.com" class="btn">
+            <i class="fas fa-envelope"></i> Envíanos un email
+          </a>
         </div>
-        <div>
-            <h1>11. Visualizar la imagen en Docker Hub.</h1>
-            <li><h4>Para este paso accdemos a nuestro navegador, vamos a la pagina de Docker Hub luego a la seccion de repository y buscamos la imagen con el nombre colocado anteriormente.</h4></li>
-            <img src="5.1_y_5.2/p11.PNG" width="600px" height="250px">
-        </div>
-        <div>
-            <h1>Notas adicionales.</h1>
-            <li><h4>Alpine Linux es una distribución muy ligera basada en "musl libc" y "BusyBox", 
-            lo que la hace ideal para contenedores Docker pequeños y seguros. Sin embargo, esa ligereza 
-            trae limitaciones importantes al instalar aplicaciones grandes o complejas como:
-
-            <li>Atom</li>
-
-            <li>Eclipse</li>
-
-            <li>LibreOffice</li>
-
-            Estas aplicaciones tienen muchas dependencias gráficas y bibliotecas que no están
-             disponibles en Alpine, o no son compatibles con musl libc</h4></li>
-             <h4><li>Muchas aplicaciones como Atom y Eclipse están compiladas para sistemas basados en "glibc" como Debian, Ubuntu, Fedora.</li></h4>
-             <h4><li>Debido a que Alpine Linux usa "MUSL" y NO utiliza GLIBC estas aplicaciones complejas o con 
-              muchas dependencias genran errores al intentar su instalacion.</li></h4>
-              <li><h4>Se recomienda utilizar una imagen base más completa
-            si se necesita de  esas aplicaciones, es mejor usar una imagen base como: ubuntu, debian o fedora.</h4></li>
-        </div>
-
-
-        <h1 class="red"><li>Ver imagen en Docker Hub: <a href="https://hub.docker.com/repository/docker/julianalexis/alpine-proyecto-modificado/general">Ver imagen Alpine Linux</a></li></h1>
-      </ul>
+      </div>
+    </section>
+  </main>
+  
+  <!-- Footer -->
+  <footer>
+    <p>Proyecto Final - Grupo 3</p>
+    <p>Todos los derechos reservados &copy; 2023</p>
+    <div class="social-links">
+      <a href="#"><i class="fab fa-github"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
+      <a href="#"><i class="fab fa-docker"></i></a>
     </div>
-  </section>
+  </footer>
+  
+  <!-- Back to Top Button -->
+  <div class="back-to-top">
+    <i class="fas fa-arrow-up"></i>
+  </div>
+  
+  <script>
+    // Back to top button
+    const backToTopButton = document.querySelector('.back-to-top');
+    
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        backToTopButton.classList.add('active');
+      } else {
+        backToTopButton.classList.remove('active');
+      }
+    });
+    
+    backToTopButton.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+    
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
 </body>
 </html>
